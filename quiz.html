@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>The Quiz</title>
+    </head>
+        
+    <body>
+        <h1>You seek the grail! You must answer these questions!</h1>
+    
+        <form id="quizForm">
+            <p><b>1. What... is your name?</b><br>
+            <input type="radio" name="q1" value="bob"> Bob<br>
+            <input type="radio" name="q1" value="frank"> Frank<br>
+            <input type="radio" name="q1" value="arthur"> Arthur, King of the Britons<br><br></p>
+
+            <p><b>2. What... is your quest?</b><br>
+            <input type="radio" name="q2" value="grail"> To seek the Holy Grail.<br>
+            <input type="radio" name="q2" value="kitchen"> To finish renovating my kitchen.<br>
+            <input type="radio" name="q2" value="drawer"> To sort my sock drawer<br><br></p>
+
+            <p><b>3.  What... is the air-speed velocity of an unladen swallow?</b><br>
+            <input type="radio" name="q3" value="10"> 10 mph<br>
+            <input type="radio" name="q3" value="15"> 15 mph<br>
+            <input type="radio" name="q3" value="whichBird"> An African or European swallow?<br><br></p>
+
+            <p><b>4. What is best for cutting down a tree?</b><br>
+            <input type="radio" name="q4" value="saw"> A saw.<br>
+            <input type="radio" name="q4" value="herring"> A herring.<br>
+            <input type="radio" name="q4" value="hands"> Your bare hands.<br><br></p>
+
+            <p><b>5. What location is the most silly?</b><br>
+            <input type="radio" name="q5" value="camelot"> Camelot<br>
+            <input type="radio" name="q5" value="chicago"> Chicago<br>
+            <input type="radio" name="q5" value="wichita"> Wichita<br><br></p>
+
+            <br>
+            <button type="button" onclick="calculateScore()">Submit</button>&nbsp;&nbsp;<button type="reset">Run Away!</button>
+        </form>
+
+        <div id="score"></div>
+
+        <script>
+            
+            // Do the actual calculation.
+            function calculateScore() {
+                let score = 0;
+
+                // Get the selected answers.
+                const q1Answer = document.querySelector('input[name="q1"]:checked').value;
+                const q2Answer = document.querySelector('input[name="q2"]:checked').value;
+                const q3Answer = document.querySelector('input[name="q3"]:checked').value;
+                const q4Answer = document.querySelector('input[name="q4"]:checked').value;
+                const q5Answer = document.querySelector('input[name="q5"]:checked').value;
+
+                // Do the check for right answers.
+                if (q1Answer === "arthur") score++;
+                if (q2Answer === "grail") score++;
+                if (q3Answer === "whichBird") score++;
+                if (q4Answer === "herring") score++;
+                if (q5Answer === "camelot") score++;
+
+                // Display the result.
+                const theScore = document.getElementById("score");
+                theScore.innerHTML = "<b>Your Score:</b> " + score + "/5";
+            }
+
+        </script>
+
+    </body>
+</html>
